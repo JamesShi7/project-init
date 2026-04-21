@@ -42,11 +42,11 @@ Clone into your Claude Code skills directory:
 
 ```bash
 # Method 1: Clone directly
-git clone https://github.com/JamesShi1996/project-init.git ~/.claude/skills/project-init
+git clone https://github.com/JamesShi7/project-init.git ~/.claude/skills/project-init
 
 # Method 2: If you already have skills, just add this one
 cd ~/.claude/skills
-git clone https://github.com/JamesShi1996/project-init.git
+git clone https://github.com/JamesShi7/project-init.git
 ```
 
 ## Use
