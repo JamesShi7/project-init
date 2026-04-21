@@ -1,5 +1,7 @@
 # project-init
 
+**[English](README.md)** | [中文](README_zh.md)
+
 > One command to give your project a persistent brain.
 
 When you work with AI coding assistants across multiple sessions, you start from scratch every time. The AI doesn't remember what happened yesterday, what decisions were made, or what the project rules are. You end up re-explaining context, re-establishing conventions, and losing institutional knowledge.
