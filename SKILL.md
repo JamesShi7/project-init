@@ -69,6 +69,8 @@ Create each file using the templates below, replacing `{{VARIABLES}}` with user 
 
 For `{{DATE}}` use today's date in YYYY-MM-DD format.
 
+When creating `log/` directory, also create `log/.gitkeep` (empty file) so git tracks the directory even when empty.
+
 ### Step 4: Output Report
 
 After all files are created, output:
@@ -387,7 +389,7 @@ When some files already exist:
 2. **Create only missing files** with templates
 3. **For existing CLAUDE.md**: check if it contains `## 项目管理系统` section. If missing, offer to append the system rules block (the trigger words, file roles, session protocols). If present, skip.
 4. **For existing session-handoff.md / TODO.md**: skip entirely
-5. **For log/ directory**: create if missing, never touch existing log files
+5. **For log/ directory**: create if missing (with `log/.gitkeep`), never touch existing log files
 6. **For .claude/candidates.md**: create if missing, skip if exists
 7. **For old .claude/memory/ directory**: if it exists, treat as legacy system. See Legacy Migration below.
 8. **For existing .cursor/rules/**: check if `project-system.mdc` already exists. If yes, skip. If only other .mdc files exist, create `project-system.mdc` alongside them (not overwrite).
