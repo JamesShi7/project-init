@@ -400,6 +400,8 @@ If a user provides a task missing required fields, ask them to fill in. Complete
 
 ### Template 2: PROJECT.md
 
+**Language adaptation:** Adapt all headers, labels, and descriptions to the configured language using the PROJECT.md entries in the Key Terms Glossary. In bilingual mode, use Chinese headers with English in parentheses.
+
 The project wiki — single file that tells anyone/AI what this project is about.
 
 ```
@@ -458,6 +460,8 @@ The project wiki — single file that tells anyone/AI what this project is about
 
 ### Template 3: session-handoff.md
 
+**Language adaptation:** Adapt all headers, labels, and descriptions to the configured language using the session-handoff.md entries in the Key Terms Glossary.
+
 Cross-session handoff — tells the next session where things left off.
 
 ```
@@ -495,6 +499,8 @@ Cross-session handoff — tells the next session where things left off.
 
 ### Template 4: TODO.md
 
+**Language adaptation:** Adapt the meta instruction line and section headers to the configured language. Task metadata fields use the TODO.md glossary entries (Owner, Deadline, Dependencies / 负责人, 截止, 依赖).
+
 Execution task list. Simple, actionable, with required metadata per task.
 
 ```
@@ -513,6 +519,8 @@ Execution task list. Simple, actionable, with required metadata per task.
 ---
 
 ### Template 5: .claude/candidates.md
+
+**Language adaptation:** Adapt section headers using the candidates.md glossary entries.
 
 Constitution candidate pool. AI writes here, user reviews via "review claude".
 
