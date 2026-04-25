@@ -910,6 +910,7 @@ When some files already exist:
 8. **For .claude/.file-snapshot.json**: create if missing (empty `{"lastScan":"","files":{}}`). If exists, skip.
 9. **For old .claude/memory/ directory**: if it exists, treat as legacy system. See Legacy Migration below.
 10. **For existing .cursor/rules/**: check if `project-system.mdc` already exists. If yes, skip. If only other .mdc files exist, create `project-system.mdc` alongside them (not overwrite).
+11. **For language setting in CLAUDE.md**: if CLAUDE.md exists but has no `## Language` section, add one with default value `bilingual`. If it exists, skip.
 
 ### Legacy Migration (.claude/memory/ → new system)
 
@@ -949,6 +950,7 @@ Output shows status of each file, plus any legacy migration suggestions:
   ✅ .claude/candidates.md — 已创建（新增）
   ✅ STRUCTURE.md               — 已创建（新增）/ 已存在，跳过
   ✅ .claude/.file-snapshot.json — 已创建（新增）/ 已存在，跳过
+  🌐 Language setting      — 已添加（默认 bilingual）/ 已存在，跳过
 
 Legacy 检测：
   ⚠️  .claude/memory/     — 发现旧版文件（5 个 session + MEMORY.md）
@@ -987,3 +989,9 @@ Legacy 检测：
 | Doing content-aware naming in Mode B | Mode B only places new files. Renaming/moving existing files is Mode A's job. |
 | Not reading file contents in Mode A | Mode A MUST read each file to understand it. Don't just match by extension/filename. |
 | Not checking cross-directory consistency in Mode A | Mode A should detect inconsistencies between sibling directories (e.g., different naming patterns for same file type) |
+| Hardcoding trigger words instead of matching intent | Triggers should match semantic intent in any language, not fixed phrases |
+| Changing system file names (CLAUDE.md, PROJECT.md) when switching language | System management file names always stay English. Only user files can be renamed. |
+| Writing end session summary in wrong language | Always check CLAUDE.md Language setting before generating output |
+| Not updating STRUCTURE.md naming conventions when language changes | Language Change Protocol must update both content language AND naming rules |
+| Forcing English filenames when language is zh | zh mode allows Chinese filenames for user files |
+| Forcing Chinese filenames when language is en | en mode enforces English kebab-case for user files |
