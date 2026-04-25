@@ -194,6 +194,11 @@ Determine how this skill was triggered:
 **C. Triggered by initialization keywords (/project-init, 初始化项目, etc.):**
 → Continue to Step 1 below for full initialization
 
+**D. Triggered by language change intent (切换语言 / change language / 换个语言 / switch to English, etc.):**
+1. Skip initialization steps (Step 1-4)
+2. Execute the **Language Change Protocol** section below
+3. Report results and stop
+
 This allows the skill to work in any project — whether initialized or not.
 
 ### Step 1: Detect Mode
@@ -226,8 +231,14 @@ Ask the user these questions using AskUserQuestion:
 3. **当前阶段** — e.g., "v1 MVP", "规划中", "已上线"
 4. **GitHub 仓库** — optional, e.g., "org/repo-name"
 5. **是否创建 Cursor 规则文件** — yes/no (default: yes)
+6. **语言 / Language** — 选择管理文件内容语言 / Select content language for management files:
+   - `en` — English
+   - `zh` — 中文
+   - `bilingual` — 中英双语（默认 / default）
 
 ### Step 3: Create Files
+
+Use the language setting from Q6 when generating all file content. Apply the Language Adaptation rules and Key Terms Glossary above.
 
 Create each file using the templates below, replacing `{{VARIABLES}}` with user answers.
 
@@ -251,11 +262,13 @@ After all files are created, output:
   ✅ .claude/candidates.md — 宪法候选池（已创建）
   ✅ STRUCTURE.md        — 文件管理规则（已创建）
   ✅ .cursor/rules/      — Cursor 规则（已创建 / 已跳过）
+  🌐 Language: {{LANGUAGE}}
 
 下一步：
 1. 根据项目需要，在 TODO.md 添加第一批任务
 2. 正常开始工作
 3. 结束时说 "end session" 即可自动记录
+4. 切换语言随时说 "change language" / "切换语言"
 
 触发词速查：
   end session / 结束会话 / 收工 → 写 log + 全量同步
@@ -375,6 +388,7 @@ TODO.md 中每条任务必须包含三要素：
 - `{{CURRENT_STAGE}}` → answer to Q3
 - `{{GITHUB_LINE}}` → `- **GitHub：** {{answer}}` if Q4 provided, else empty string
 - `{{DATE}}` → today YYYY-MM-DD
+- `{{LANGUAGE}}` → answer to Q6 (`en`, `zh`, or `bilingual`)
 
 ---
 
