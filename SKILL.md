@@ -721,6 +721,7 @@ Two modes with different depth levels, triggered by different commands.
       - Are there spaces, special characters, or inconsistent case?
       - Does it have redundant prefixes (e.g., company name in a file already inside the company folder)?
       - Is the extension duplicated (e.g., .pdf.pdf)?
+      - Does the filename follow the language-appropriate naming convention from STRUCTURE.md? (e.g., Chinese names when language is zh, English kebab-case when en)
    d. Identify structural issues:
       - Is it in the correct directory per STRUCTURE.md rules?
       - Should it be in a subdirectory (assets/, reference-answers/)?
@@ -728,6 +729,7 @@ Two modes with different depth levels, triggered by different commands.
 
 3. Reorganization Phase:
    a. Fix naming: rename files to match STRUCTURE.md conventions
+   - Apply language-appropriate naming: if language is `zh`, allow Chinese filenames; if `en`, enforce English kebab-case; if `bilingual`, prefer English with Chinese acceptable for docs
    b. Fix structure: move files to correct directories, create subdirectories if needed (assets/, reference-answers/, etc.)
    c. Enforce cross-directory consistency: if one company folder has a certain structure, check if sibling folders should match
    d. For files with no matching rule:
@@ -793,6 +795,7 @@ Two modes with different depth levels, triggered by different commands.
    a. Read content (only if needed to determine category — skip if filename is obvious)
    b. Match against existing STRUCTURE.md rules
    c. If match: place file in target directory with correct naming
+   - Apply language-appropriate naming from STRUCTURE.md conventions when placing new files
    d. If no match:
       - Brief content scan to infer category
       - If inferable: add rule + place file
@@ -817,6 +820,7 @@ Two modes with different depth levels, triggered by different commands.
 - **NEVER re-read files already in snapshot** unless specifically investigating an issue
 - **NEVER do cross-directory consistency checks** — that's Mode A's job
 - **NEVER rename existing files** — only place new ones
+- **NEVER rename files to a different language in Mode B** — language-based renaming only happens in Mode A or via the Language Change Protocol
 - If STRUCTURE.md doesn't exist: fall back to Mode A (need to establish baseline first)
 
 
