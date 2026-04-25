@@ -60,6 +60,20 @@ project-root/
 
 This hierarchy means information flows upward (facts → snapshot → principles) and constraints flow downward (principles → snapshot → facts). Each layer has a different change frequency, owner, and purpose.
 
+### Language Support
+
+project-init supports 3 language modes:
+
+| Mode | Content Language | User File Naming |
+|------|-----------------|------------------|
+| `en` (English) | All content in English | English naming (kebab-case) |
+| `zh` (中文) | All content in Chinese | Chinese naming allowed |
+| `bilingual` (default) | Chinese with English annotations | English preferred, Chinese acceptable |
+
+Set during `/project-init` setup, or change anytime by saying "change language" / "切换语言".
+
+When switching language, you're asked whether to rename user files to match the new language's naming conventions. System files (CLAUDE.md, PROJECT.md, etc.) keep their English names regardless.
+
 ### The 4 Components
 
 #### 1. Session Logs (log/)
@@ -117,12 +131,14 @@ If you mention a task without these fields, the AI asks you to fill them in. Com
 
 After setup, these become part of your workflow:
 
-| You say | What happens |
+| You say (any expression of...) | What happens |
 |---------|-------------|
-| `end session` / `结束会话` / `收工` | Write log + update handoff + sync Wiki + check TODO + collect constitution candidates + output summary |
-| `review claude` / `更新宪法` | Show candidate rules for you to confirm one by one |
-| `sync wiki` / `同步项目` | Force rescan and update PROJECT.md |
-| `status` / `项目现状` | Read Wiki + handoff summary aloud |
+| "we're done" / "end session" | Write log + update handoff + sync Wiki + organize files + output summary |
+| "check the rules" / "review claude" | Show candidate rules for you to confirm one by one |
+| "update overview" / "sync wiki" | Force rescan and update PROJECT.md |
+| "where are we" / "status" | Read Wiki + handoff summary aloud |
+| "clean up files" / "organize" | Scan and reorganize files per STRUCTURE.md rules |
+| "switch language" / "切换语言" | Change content language for all management files |
 
 The key insight: **you just work normally, and say "end session" when you're done.** The system handles everything else.
 
