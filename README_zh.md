@@ -20,17 +20,19 @@
 
 ## 工作原理
 
-运行一次 `/project-butler`，它会创建 6 个文件，按 4 个层级组织：
+运行一次 `/project-butler`，它会创建 8 个文件，按 4 个层级组织：
 
 ```
 project-root/
 ├── CLAUDE.md                   ← 项目宪法（人工确认的规则）
 ├── PROJECT.md                  ← 项目 Wiki（AI 自动同步）
+├── STRUCTURE.md                ← 文件管理规则（AI 自动维护）
 ├── session-handoff.md          ← 跨会话接手指引（AI 自动更新）
 ├── TODO.md                     ← 执行清单
 ├── log/                        ← 会话日志（AI 自动生成）
 └── .claude/
-    └── candidates.md           ← 宪法候选池（AI 自动收集）
+    ├── candidates.md           ← 宪法候选池（AI 自动收集）
+    └── .file-snapshot.json     ← 文件整理快照
 ```
 
 ### 设计哲学：按稳定性分层
@@ -74,7 +76,7 @@ project-butler 支持 3 种语言模式：
 
 切换语言时，会询问是否按新语言的命名规范重命名用户文件。系统文件（CLAUDE.md, PROJECT.md 等）始终保持英文名。
 
-### 四大组件
+### 五大组件
 
 #### 1. 会话日志（log/）
 
@@ -116,7 +118,16 @@ project-butler 支持 3 种语言模式：
 
 这意味着宪法从真实使用模式中有机生长，但你始终掌控最终决定权。
 
-#### 4. 执行清单（TODO.md）
+#### 4. 文件管理（STRUCTURE.md）
+
+智能文件整理——不只是移动文件，而是理解每个文件是什么、应该放在哪里：
+
+- 两种模式：**深度整理**（读取每个文件、修复命名 + 结构）和**增量整理**（收工时只处理新文件）
+- 语言感知命名：en → kebab-case，zh → 允许中文命名，bilingual → 英文优先
+- 自动适配项目类型（代码、视频制作、商业文档、混合型）
+- 绝不触碰管理文件或排除目录（`.git/`、`node_modules/` 等）
+
+#### 5. 执行清单（TODO.md）
 
 不是灵感池，是执行计划。每条任务必须包含三个要素：
 
@@ -150,7 +161,7 @@ project-butler 支持 3 种语言模式：
 
 ```bash
 # Clone 到你的 Claude Code skills 目录
-git clone https://github.com/JamesShi7/project-butler.git ~/.claude/skills/project-butler
+git clone https://github.com/JamesShi96/project-butler.git ~/.claude/skills/project-butler
 ```
 
 ## 使用
@@ -167,7 +178,7 @@ git clone https://github.com/JamesShi7/project-butler.git ~/.claude/skills/proje
 
 ## 环境要求
 
-- [Claude Code](https://claude.com/claude-code) CLI
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
 - 可选：[Cursor](https://cursor.sh)（用于跨工具规则文件）
 
 ## 许可证

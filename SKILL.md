@@ -188,7 +188,7 @@ Determine how this skill was triggered:
    - Update `TODO.md` (if exists)
    - Collect constitution candidates → `.claude/candidates.md` (if exists)
    - **Execute File Reorganization Protocol — Mode B: Incremental Organize** (see dedicated section)
-   - Output Chinese summary
+   - Output summary in the configured language
 4. Report results and stop
 
 **C. Triggered by initialization keywords (/project-butler, 初始化项目, etc.):**

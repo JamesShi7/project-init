@@ -20,17 +20,19 @@ If any of these sound familiar, this skill is for you:
 
 ## How It Works
 
-Run `/project-butler` once. It creates 6 files organized in 4 layers:
+Run `/project-butler` once. It creates 8 files organized in 4 layers:
 
 ```
 project-root/
 ├── CLAUDE.md                   ← Constitution (human-confirmed rules)
 ├── PROJECT.md                  ← Wiki (auto-synced project overview)
+├── STRUCTURE.md                ← File management rules (auto-maintained)
 ├── session-handoff.md          ← Cross-session handoff (auto-updated)
 ├── TODO.md                     ← Execution checklist
 ├── log/                        ← Session logs (auto-generated)
 └── .claude/
-    └── candidates.md           ← Constitution candidate pool
+    ├── candidates.md           ← Constitution candidate pool
+    └── .file-snapshot.json     ← File organization snapshot
 ```
 
 ### Design Philosophy: Layered by Stability
@@ -74,7 +76,7 @@ Set during `/project-butler` setup, or change anytime by saying "change language
 
 When switching language, you're asked whether to rename user files to match the new language's naming conventions. System files (CLAUDE.md, PROJECT.md, etc.) keep their English names regardless.
 
-### The 4 Components
+### The 5 Components
 
 #### 1. Session Logs (log/)
 
@@ -83,12 +85,12 @@ Every time you say `end session`, the AI writes a structured log:
 ```markdown
 # Session 2026-04-21 — PRD Draft
 
-## 本次目标
-## 关键操作（按时间顺序）
-## 决策与理由
-## 产出文件
-## 未完事项 / 下次接手点
-## 候选 CLAUDE.md 条目（如有）
+## Session Goal
+## Key Actions (Chronological)
+## Decisions & Rationale
+## Output Files
+## Unfinished Items / Next Session Pickup
+## CLAUDE.md Candidates (if any)
 ```
 
 Like meeting notes, but automatic. Next session, the AI reads the latest log and picks up where you left off.
@@ -116,13 +118,22 @@ The project's rules and boundaries — but with a crucial safety mechanism:
 
 This means the constitution grows organically from real usage patterns, but you stay in control.
 
-#### 4. Execution Checklist (TODO.md)
+#### 4. File Manager (STRUCTURE.md)
+
+Intelligent file organization — not just moving files around, but understanding what each file is and where it belongs:
+
+- Two modes: **deep organize** (reads every file, fixes naming + structure) and **incremental organize** (only processes new files at end of session)
+- Language-aware naming: en → kebab-case, zh → Chinese names allowed, bilingual → English preferred
+- Adapts to project type (code, video production, business docs, mixed)
+- Never touches management files or excluded directories (`.git/`, `node_modules/`, etc.)
+
+#### 5. Execution Checklist (TODO.md)
 
 Not an idea pool — an execution plan. Every task has three required fields:
 
 ```
 - [ ] Implement user authentication
-  负责人：James｜截止：2026-04-30｜依赖：Database schema finalized
+  Owner: James | Deadline: 2026-04-30 | Dependencies: Database schema finalized
 ```
 
 If you mention a task without these fields, the AI asks you to fill them in. Completed tasks are checked off and kept (not deleted) as execution history.
@@ -150,7 +161,7 @@ If you use both Claude Code and Cursor, `/project-butler` optionally creates a `
 
 ```bash
 # Clone into your Claude Code skills directory
-git clone https://github.com/JamesShi7/project-butler.git ~/.claude/skills/project-butler
+git clone https://github.com/JamesShi96/project-butler.git ~/.claude/skills/project-butler
 ```
 
 ## Use
@@ -167,7 +178,7 @@ Answer 5 quick questions (project name, description, stage, GitHub URL, Cursor r
 
 ## Requirements
 
-- [Claude Code](https://claude.com/claude-code) CLI
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
 - Optionally: [Cursor](https://cursor.sh) (for cross-tool rules file)
 
 ## License
