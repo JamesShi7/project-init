@@ -193,21 +193,6 @@ git clone https://github.com/JamesShi96/project-butler.git ~/.claude/skills/proj
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
 - 可选：[Cursor](https://cursor.sh)（用于跨工具规则文件）
 
-## 更新日志
-
-### 2026-05-01
-- **新增：`/resume` skill** — 恢复上次会话完整对话。用 jq 预过滤读取最近 session JSONL（去掉 thinking/tool_result 噪音），加上 git status 和 memory。[独立安装](https://github.com/JamesShi96/project-butler/tree/main/docs/resume.md)
-- **新增：`/resume-full` skill** — 完整项目轨迹恢复。上次会话详细读取 + 所有历史会话摘要时间线 + 更广的 git/memory 上下文。
-- **新增：日志压缩协议** — 当会话日志超过 10 个文件时，自动将旧日志压缩为单个摘要文件。保持 `log/` 目录有界，不丢失历史。
-
-### 2026-04-29
-- **多语言支持** — 3 种模式：英文、中文、双语。语言感知的文件命名、内容生成和随时切换。
-- **文件整理** — 深度整理（全量扫描）vs 增量整理（仅处理新文件）。自动适配项目类型和命名规范。
-- **README 重写** — 增加问题陈述、设计哲学图示、组件详解和中文翻译。
-
-### 2026-04-24
-- **首次发布** — 5 大组件：会话日志、项目 Wiki、项目宪法、文件管理、执行清单。多工具支持（Claude Code + Cursor）。
-
 ## 许可证
 
-MIT
+[MIT](LICENSE)
