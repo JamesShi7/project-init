@@ -8,6 +8,18 @@ When you work with AI coding assistants across multiple sessions, you start from
 
 **project-butler** solves this by setting up a self-maintaining project management system in one command. After setup, your AI assistant automatically logs sessions, maintains a project wiki, tracks tasks, and accumulates rules for your review — no manual effort required.
 
+## What You Can Do
+
+| Command / Trigger | What It Does |
+|---|---|
+| `/project-butler` | Initialize the full project management system — session logs, wiki, constitution, file manager, task tracker. One-time setup, everything auto-maintains after. |
+| "end session" / "收工" | Auto-write session log, update handoff, sync wiki, organize files. Walk away and everything is captured. |
+| `/resume` | Recover your last session's full conversation. Start a new session and pick up exactly where you left off — no re-explaining needed. |
+| `/resume-full` | Full project trajectory recovery. Read the last session in detail + summaries of all historical sessions. Perfect for returning after a long absence. |
+| "review claude" | AI shows candidate rules it discovered during work. You confirm, reject, or rewrite each one. Constitution grows organically. |
+| "sync wiki" | Force-update the project overview file. Anyone (human or AI) reads one file to understand the whole project. |
+| "organize files" | Smart file reorganization — understands what each file is, where it belongs, and respects your naming conventions. |
+
 ## The Problem It Solves
 
 If any of these sound familiar, this skill is for you:
@@ -180,6 +192,21 @@ Answer 5 quick questions (project name, description, stage, GitHub URL, Cursor r
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
 - Optionally: [Cursor](https://cursor.sh) (for cross-tool rules file)
+
+## Changelog
+
+### 2026-05-01
+- **New: `/resume` skill** — Recover last session's full conversation context. Read the most recent session JSONL with jq pre-filtering (strips thinking/tool_result noise), plus git status and memory. [Install separately](https://github.com/JamesShi96/project-butler/tree/main/docs/resume.md)
+- **New: `/resume-full` skill** — Full project trajectory recovery. Last session in detail + summarized timeline of all historical sessions + broader git/memory context.
+- **New: Log Compaction Protocol** — When session logs exceed 10 files, automatically compact older logs into a single summary file. Keeps the `log/` directory bounded without losing history.
+
+### 2026-04-29
+- **Language Support** — 3 modes: English, Chinese, bilingual. Language-aware file naming, content generation, and on-the-fly language switching.
+- **File Reorganization** — Deep organize (full scan) vs incremental organize (new files only). Adapts to project type and naming conventions.
+- **README rewrite** — Added problem statement, design philosophy diagram, component deep-dives, and Chinese translation.
+
+### 2026-04-24
+- **Initial release** — 5-component system: session logs, project wiki, constitution, file manager, execution checklist. Multi-tool support (Claude Code + Cursor).
 
 ## License
 
