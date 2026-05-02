@@ -176,6 +176,8 @@ project-butler 支持 3 种语言模式：
 git clone https://github.com/JamesShi96/project-butler.git ~/.claude/skills/project-butler
 ```
 
+`/resume` 和 `/resume-full` 已包含在内，无需额外安装。
+
 ## 使用
 
 在任意项目目录下：
@@ -230,4 +232,4 @@ git clone https://github.com/JamesShi96/project-butler.git ~/.claude/skills/proj
 
 ---
 
-完整更新日志：[CHANGELOG.md](CHANGELOG.md) | 版本发布：[GitHub Releases](https://github.com/JamesShi96/project-butler/releases)
+完整更新日志：[UPDATE_LOG.md](UPDATE_LOG.md) | 版本发布：[GitHub Releases](https://github.com/JamesShi96/project-butler/releases)

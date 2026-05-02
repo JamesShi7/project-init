@@ -176,6 +176,8 @@ If you use both Claude Code and Cursor, `/project-butler` optionally creates a `
 git clone https://github.com/JamesShi96/project-butler.git ~/.claude/skills/project-butler
 ```
 
+This includes `/resume` and `/resume-full` — no separate installation needed.
+
 ## Use
 
 In any project directory:
@@ -224,7 +226,7 @@ Answer 5 quick questions (project name, description, stage, GitHub URL, Cursor r
 
 ---
 
-Full changelog: [CHANGELOG.md](CHANGELOG.md) | Releases: [GitHub Releases](https://github.com/JamesShi96/project-butler/releases)
+Full update log: [UPDATE_LOG.md](UPDATE_LOG.md) | Releases: [GitHub Releases](https://github.com/JamesShi96/project-butler/releases)
 
 ## License
 
